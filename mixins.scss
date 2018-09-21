@@ -1,0 +1,102 @@
+/**
+  * sources:
+  *
+  * line animation using background image:
+  * https://codepen.io/lehollandaisvolant/pen/aNQNjx
+  *
+  * pure css material forms:
+  * https://codepen.io/uzielweb/pen/vyXqpx
+ */
+
+.uk-form-group {
+  position: relative;
+}
+
+@mixin hook-form-label() {
+  position: absolute;
+  top: calc(1rem + #{$form-padding-vertical});
+  pointer-events: none;
+  padding-left: $form-padding-horizontal;
+  z-index: 1;
+  color: $global-muted-color;
+  font-size: 1rem;
+  font-weight: normal;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+}
+
+/**
+ * text, textarea, select
+ */
+@mixin hook-form() {
+  position: relative;
+  border: none;
+  background: transparent no-repeat;
+  margin-top: 1rem;
+
+  background-image: linear-gradient(to bottom, $global-primary-background, $global-primary-background), linear-gradient(to bottom, $global-muted-color, $global-muted-color);
+  /* sizes for the 2 images (default state) */
+  background-size: 0 2px, 100% 2px;
+  /* positions for the 2 images. Change both "50%" to "0%" or "100%" and tri again */
+  background-position: 50% 100%, 50% 100%;
+
+  /* animation solely on background-size */
+  transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+@mixin hook-form-focus() {
+  background-color: transparent;
+
+  /* sizes for the 2 images (focus state) */
+  background-size: 100% 2px, 100% 1px;
+  outline: none;
+}
+
+.uk-form-group textarea {
+  padding-top: $form-padding-vertical * 2;
+  padding-bottom: $form-padding-vertical;
+}
+
+.uk-form-group input:focus ~ .uk-form-label,
+.uk-form-group input:valid ~ .uk-form-label,
+.uk-form-group textarea:focus ~ .uk-form-label,
+.uk-form-group textarea:valid ~ .uk-form-label,
+.uk-form-group select:focus ~ .uk-form-label,
+.uk-form-group select:valid ~ .uk-form-label {
+  color: $global-muted-color;
+  font-size: 0.8rem;
+  top: 0 !important;
+}
+
+.uk-form-group input:focus ~ .uk-form-label,
+.uk-form-group textarea:focus ~ .uk-form-label,
+.uk-form-group select:focus ~ .uk-form-label {
+  color: $global-primary-background;
+}
+
+/**
+ * checkbox, radio
+ */
+.uk-form-controls-text .uk-checkbox {
+  margin-right: 5px;
+}
+
+@mixin hook-form-radio() {
+  border: 2px solid $global-muted-color;
+}
+
+@mixin hook-form-radio-focus() {
+  border-color: darken($global-muted-color, 10%);
+}
+
+@mixin hook-form-radio-checked() {
+  border-color: transparent;
+}
+
+@mixin hook-inverse-form-radio-checked() {
+  background-color: darken($global-primary-background, 10%);
+}
+
+@mixin hook-inverse-form-radio-checked-focus() {
+  background-color: $global-primary-background;
+}
