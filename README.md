@@ -1,16 +1,21 @@
 # uikit3-material-forms
 
-Material design forms for use with [@UIkit3](http://twitter.com/#!/dominictarr).
+Pure CSS material design forms for use with [UIkit 3](http://twitter.com/#!/dominictarr).  
+  
+[Demo](https://maxia.github.io/uikit3-material-forms/test/index.html)
 
-## Usage
+## Known issues
+Validation states are not supported yet.
 
+
+## Installation
 Install package via npm
 
 <pre>
 npm install uikit3-material-forms
 </pre>
 
-Include files files in your UIkit3 theme (see: https://getuikit.com/docs/sass#how-to-build)
+Include files into your UIkit 3 theme (see: https://getuikit.com/docs/sass#how-to-structure-your-theme)
 
 <pre>
 // 1. Your custom variables and variable overwrites.

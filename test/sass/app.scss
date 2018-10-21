@@ -11,3 +11,7 @@
 
 // 4. Import UIkit
 @import "../node_modules/uikit/src/scss/uikit.scss";
+
+.uk-container-small {
+  max-width: 600px;
+}

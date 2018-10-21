@@ -1,4 +1,3 @@
-
 $form-background: transparent;
 $form-focus-background: transparent;
 $inverse-form-background: transparent;
@@ -7,12 +6,6 @@ $form-radio-background: transparent;
 $inverse-form-radio-background: transparent;
 $inverse-form-radio-checked-background: transparent;
 $inverse-form-radio-checked-icon-color: #fff;
-
-/*
-$inverse-form-radio-checked-background: $inverse-global-primary-background !default;
-$inverse-form-radio-checked-icon-color: $inverse-global-inverse-color !default;
-$inverse-form-radio-checked-focus-background: darken($inverse-global-primary-background, 10%) !default;
-*/
 
 $form-padding-horizontal: 5px;
 //$form-padding-vertical: 15px;
@@ -45,4 +38,7 @@ $form-large-padding-horizontal: 12px !default;
 $form-large-line-height: $form-large-height - (2* $form-border-width) !default;
 $form-large-font-size: $global-medium-font-size !default;
 $form-danger-color: $global-danger-background !default;
+$inverse-form-radio-checked-background: $inverse-global-primary-background !default;
+$inverse-form-radio-checked-icon-color: $inverse-global-inverse-color !default;
+$inverse-form-radio-checked-focus-background: darken($inverse-global-primary-background, 10%) !default;
 */
