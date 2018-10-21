@@ -1,9 +1,4 @@
 /*
-$inverse-form-radio-checked-background: $inverse-global-primary-background !default;
-$inverse-form-radio-checked-icon-color: $inverse-global-inverse-color !default;
-$inverse-form-radio-checked-focus-background: darken($inverse-global-primary-background, 10%) !default;
-*/
-/*
 $form-range-thumb-height: 15px !default;
 $form-range-thumb-border-radius: 500px !default;
 $form-range-thumb-background: $global-background !default;
@@ -31,6 +26,9 @@ $form-large-padding-horizontal: 12px !default;
 $form-large-line-height: $form-large-height - (2* $form-border-width) !default;
 $form-large-font-size: $global-medium-font-size !default;
 $form-danger-color: $global-danger-background !default;
+$inverse-form-radio-checked-background: $inverse-global-primary-background !default;
+$inverse-form-radio-checked-icon-color: $inverse-global-inverse-color !default;
+$inverse-form-radio-checked-focus-background: darken($inverse-global-primary-background, 10%) !default;
 */
 /**
   * sources:
@@ -46,6 +44,26 @@ $form-danger-color: $global-danger-background !default;
 }
 
 /**
+ * labels
+ */
+.uk-form-label-material {
+  position: absolute;
+  top: calc(1rem + 4px);
+  pointer-events: none;
+  padding-left: 5px;
+  z-index: 1;
+  color: #737373;
+  font-size: 1rem;
+  font-weight: normal;
+  -webkit-transition: all 0.28s ease;
+  transition: all 0.28s ease;
+}
+
+.uk-light .uk-form-label-material, .uk-offcanvas-bar .uk-form-label-material, .uk-overlay-primary .uk-form-label-material, .uk-card-secondary > :not([class*=uk-card-media]) .uk-form-label-material, .uk-card-secondary.uk-card-body .uk-form-label-material, .uk-card-primary > :not([class*=uk-card-media]) .uk-form-label-material, .uk-card-primary.uk-card-body .uk-form-label-material, .uk-tile-secondary:not(.uk-preserve-color) .uk-form-label-material, .uk-tile-primary:not(.uk-preserve-color) .uk-form-label-material, .uk-section-secondary:not(.uk-preserve-color) .uk-form-label-material, .uk-section-primary:not(.uk-preserve-color) .uk-form-label-material {
+  color: #999;
+}
+
+/**
  * text, textarea, select
  */
 .uk-form-group textarea {
@@ -53,28 +71,33 @@ $form-danger-color: $global-danger-background !default;
   padding-bottom: 4px;
 }
 
-.uk-form-group input:focus ~ .uk-form-label,
-.uk-form-group input:valid ~ .uk-form-label,
-.uk-form-group textarea:focus ~ .uk-form-label,
-.uk-form-group textarea:valid ~ .uk-form-label,
-.uk-form-group select:focus ~ .uk-form-label,
-.uk-form-group select:valid ~ .uk-form-label {
-  color: #999;
+.uk-form-group input:focus ~ .uk-form-label-material,
+.uk-form-group input:valid ~ .uk-form-label-material,
+.uk-form-group textarea:focus ~ .uk-form-label-material,
+.uk-form-group textarea:valid ~ .uk-form-label-material,
+.uk-form-group select ~ .uk-form-label-material {
+  color: #737373;
   font-size: 0.8rem;
   top: 0 !important;
 }
 
-.uk-form-group input:focus ~ .uk-form-label,
-.uk-form-group textarea:focus ~ .uk-form-label,
-.uk-form-group select:focus ~ .uk-form-label {
+.uk-light .uk-form-group select ~ .uk-form-label-material, .uk-offcanvas-bar .uk-form-group select ~ .uk-form-label-material, .uk-overlay-primary .uk-form-group select ~ .uk-form-label-material, .uk-card-secondary > :not([class*=uk-card-media]) .uk-form-group select ~ .uk-form-label-material, .uk-card-secondary.uk-card-body .uk-form-group select ~ .uk-form-label-material, .uk-card-primary > :not([class*=uk-card-media]) .uk-form-group select ~ .uk-form-label-material, .uk-card-primary.uk-card-body .uk-form-group select ~ .uk-form-label-material, .uk-tile-secondary:not(.uk-preserve-color) .uk-form-group select ~ .uk-form-label-material, .uk-tile-primary:not(.uk-preserve-color) .uk-form-group select ~ .uk-form-label-material, .uk-section-secondary:not(.uk-preserve-color) .uk-form-group select ~ .uk-form-label-material, .uk-section-primary:not(.uk-preserve-color) .uk-form-group select ~ .uk-form-label-material {
+  color: #999;
+}
+
+.uk-form-group input:focus ~ .uk-form-label-material,
+.uk-form-group textarea:focus ~ .uk-form-label-material,
+.uk-form-group select:focus ~ .uk-form-label-material {
   color: #1e87f0;
 }
 
 /**
  * checkbox, radio
  */
-.uk-form-controls-text .uk-checkbox {
-  margin-right: 5px;
+.uk-form-controls-text .uk-checkbox,
+label .uk-radio,
+label .uk-checkbox {
+  margin-right: 4px;
 }
 
 /* ========================================================================
@@ -502,12 +525,6 @@ pre code {
 
 /* Selection pseudo-element
  ========================================================================== */
-::-moz-selection {
-  background: #39f;
-  color: #fff;
-  text-shadow: none;
-}
-
 ::selection {
   background: #39f;
   color: #fff;
@@ -545,20 +562,27 @@ template {
 /*
  * Breakpoints
  */
-.var-media-s::before {
+.uk-breakpoint-s::before {
   content: "640px";
 }
 
-.var-media-m::before {
+.uk-breakpoint-m::before {
   content: "960px";
 }
 
-.var-media-l::before {
+.uk-breakpoint-l::before {
   content: "1200px";
 }
 
-.var-media-xl::before {
+.uk-breakpoint-xl::before {
   content: "1600px";
+}
+
+:root {
+  --uk-breakpoint-s: $breakpoint-small;
+  --uk-breakpoint-m: $breakpoint-medium;
+  --uk-breakpoint-l: $breakpoint-large;
+  --uk-breakpoint-xl: $breakpoint-xlarge;
 }
 
 /* ========================================================================
@@ -800,6 +824,16 @@ a.uk-link-reset:hover,
   vertical-align: top;
 }
 
+/* Vertical
+ ========================================================================== */
+.uk-divider-vertical {
+  width: 1px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid #e5e5e5;
+}
+
 /* ========================================================================
    Component: List
  ========================================================================== */
@@ -873,6 +907,7 @@ a.uk-link-reset:hover,
 
 /*
  * Bullet
+ * 1. Reset display table which causes issues in combination with multi column layouts
  */
 .uk-list-bullet > li {
   position: relative;
@@ -889,6 +924,8 @@ a.uk-link-reset:hover,
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%220%200%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23666%22%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  /* 1 */
+  display: block;
 }
 
 /* Size modifier
@@ -1204,11 +1241,11 @@ button.uk-icon:not(:disabled) {
 /*
  * Set the fill and stroke color of all SVG elements to the current text color
  */
-.uk-icon [fill*="#"]:not(.uk-preserve) {
+.uk-icon:not(.uk-preserve) [fill*="#"]:not(.uk-preserve) {
   fill: currentcolor;
 }
 
-.uk-icon [stroke*="#"]:not(.uk-preserve) {
+.uk-icon:not(.uk-preserve) [stroke*="#"]:not(.uk-preserve) {
   stroke: currentcolor;
 }
 
@@ -1575,11 +1612,8 @@ button.uk-icon:not(:disabled) {
   background: transparent no-repeat;
   margin-top: 1rem;
   background-image: linear-gradient(to bottom, #1e87f0, #1e87f0), linear-gradient(to bottom, #999, #999);
-  /* sizes for the 2 images (default state) */
   background-size: 0 2px, 100% 2px;
-  /* positions for the 2 images. Change both "50%" to "0%" or "100%" and tri again */
   background-position: 50% 100%, 50% 100%;
-  /* animation solely on background-size */
   transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
 }
 
@@ -1622,7 +1656,6 @@ button.uk-icon:not(:disabled) {
   background-color: transparent;
   color: #666;
   background-color: transparent;
-  /* sizes for the 2 images (focus state) */
   background-size: 100% 2px, 100% 1px;
   outline: none;
 }
@@ -1808,6 +1841,7 @@ select.uk-form-width-xsmall {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   border: 2px solid #999;
+  background-origin: border-box;
 }
 
 .uk-radio {
@@ -1947,19 +1981,6 @@ select.uk-form-width-xsmall {
 
 /* Label
  ========================================================================== */
-.uk-form-label {
-  position: absolute;
-  top: calc(1rem + 4px);
-  pointer-events: none;
-  padding-left: 5px;
-  z-index: 1;
-  color: #999;
-  font-size: 1rem;
-  font-weight: normal;
-  -webkit-transition: all 0.28s ease;
-  transition: all 0.28s ease;
-}
-
 /* Layout
  ========================================================================== */
 /*
@@ -5489,7 +5510,7 @@ ul.uk-nav-sub {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.uk-lightbox-toolbar * {
+.uk-lightbox-toolbar > * {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -5990,9 +6011,15 @@ ul.uk-nav-sub {
   display: none;
 }
 
-/* Pass fill character to JS */
-.var-leader-fill::before {
+/*
+ * Pass fill character to JS
+ */
+.uk-leader-fill-content::before {
   content: ".";
+}
+
+:root {
+  --uk-leader-fill-content: $leader-fill-content;
 }
 
 /* ========================================================================
@@ -10031,6 +10058,9 @@ iframe.uk-cover {
 .uk-light .uk-divider-small::after, .uk-section-primary:not(.uk-preserve-color) .uk-divider-small::after, .uk-section-secondary:not(.uk-preserve-color) .uk-divider-small::after, .uk-tile-primary:not(.uk-preserve-color) .uk-divider-small::after, .uk-tile-secondary:not(.uk-preserve-color) .uk-divider-small::after, .uk-card-primary.uk-card-body .uk-divider-small::after, .uk-card-primary > :not([class*=uk-card-media]) .uk-divider-small::after, .uk-card-secondary.uk-card-body .uk-divider-small::after, .uk-card-secondary > :not([class*=uk-card-media]) .uk-divider-small::after, .uk-overlay-primary .uk-divider-small::after, .uk-offcanvas-bar .uk-divider-small::after {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
+.uk-light .uk-divider-vertical::after, .uk-section-primary:not(.uk-preserve-color) .uk-divider-vertical::after, .uk-section-secondary:not(.uk-preserve-color) .uk-divider-vertical::after, .uk-tile-primary:not(.uk-preserve-color) .uk-divider-vertical::after, .uk-tile-secondary:not(.uk-preserve-color) .uk-divider-vertical::after, .uk-card-primary.uk-card-body .uk-divider-vertical::after, .uk-card-primary > :not([class*=uk-card-media]) .uk-divider-vertical::after, .uk-card-secondary.uk-card-body .uk-divider-vertical::after, .uk-card-secondary > :not([class*=uk-card-media]) .uk-divider-vertical::after, .uk-overlay-primary .uk-divider-vertical::after, .uk-offcanvas-bar .uk-divider-vertical::after {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
 .uk-light .uk-list-divider > li:nth-child(n+2), .uk-section-primary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2), .uk-section-secondary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2), .uk-tile-primary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2), .uk-tile-secondary:not(.uk-preserve-color) .uk-list-divider > li:nth-child(n+2), .uk-card-primary.uk-card-body .uk-list-divider > li:nth-child(n+2), .uk-card-primary > :not([class*=uk-card-media]) .uk-list-divider > li:nth-child(n+2), .uk-card-secondary.uk-card-body .uk-list-divider > li:nth-child(n+2), .uk-card-secondary > :not([class*=uk-card-media]) .uk-list-divider > li:nth-child(n+2), .uk-overlay-primary .uk-list-divider > li:nth-child(n+2), .uk-offcanvas-bar .uk-list-divider > li:nth-child(n+2) {
   border-top-color: rgba(255, 255, 255, 0.2);
 }
@@ -10120,6 +10150,7 @@ iframe.uk-cover {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.7);
   background-clip: padding-box;
+  background-image: linear-gradient(to bottom, #1e87f0, #1e87f0), linear-gradient(to bottom, #999, #999);
 }
 .uk-light .uk-input:focus, .uk-section-primary:not(.uk-preserve-color) .uk-input:focus, .uk-section-secondary:not(.uk-preserve-color) .uk-input:focus, .uk-tile-primary:not(.uk-preserve-color) .uk-input:focus, .uk-tile-secondary:not(.uk-preserve-color) .uk-input:focus, .uk-card-primary.uk-card-body .uk-input:focus, .uk-card-primary > :not([class*=uk-card-media]) .uk-input:focus, .uk-card-secondary.uk-card-body .uk-input:focus, .uk-card-secondary > :not([class*=uk-card-media]) .uk-input:focus, .uk-overlay-primary .uk-input:focus, .uk-offcanvas-bar .uk-input:focus,
 .uk-light .uk-select:focus,
@@ -10831,7 +10862,7 @@ iframe.uk-cover {
 .uk-card-secondary > :not([class*=uk-card-media]) .uk-accordion-title:focus,
 .uk-overlay-primary .uk-accordion-title:focus,
 .uk-offcanvas-bar .uk-accordion-title:focus {
-  color: #666;
+  color: rgba(255, 255, 255, 0.7);
 }
 .uk-light .uk-iconnav > * > a, .uk-section-primary:not(.uk-preserve-color) .uk-iconnav > * > a, .uk-section-secondary:not(.uk-preserve-color) .uk-iconnav > * > a, .uk-tile-primary:not(.uk-preserve-color) .uk-iconnav > * > a, .uk-tile-secondary:not(.uk-preserve-color) .uk-iconnav > * > a, .uk-card-primary.uk-card-body .uk-iconnav > * > a, .uk-card-primary > :not([class*=uk-card-media]) .uk-iconnav > * > a, .uk-card-secondary.uk-card-body .uk-iconnav > * > a, .uk-card-secondary > :not([class*=uk-card-media]) .uk-iconnav > * > a, .uk-overlay-primary .uk-iconnav > * > a, .uk-offcanvas-bar .uk-iconnav > * > a {
   color: rgba(255, 255, 255, 0.5);
@@ -10943,6 +10974,9 @@ h3 {
 h3 {
     page-break-after: avoid;
   }
+}
+.uk-container-small {
+  max-width: 600px;
 }
 
 /*# sourceMappingURL=app.css.map */
